@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dbmapper">
+	<select id="select_top10" resultType="getset.H_getset">
+		SELECT
+		h_hotel.h_pho,
+		h_hotel.country_ko,
+		h_hotel.city_ko,
+		h_hotel.h_name_ko,
+		h_hotel.h_name_eng,
+		COUNT(h_room.h_name_eng) AS room_count
+		FROM
+		h_reserve
+		INNER JOIN
+		h_room ON h_reserve.h_roomnum = h_room.h_roomnum
+		INNER JOIN
+		h_hotel ON h_room.h_name_eng = h_hotel.h_name_eng
+		GROUP BY
+		h_hotel.h_pho,
+		h_hotel.country_ko,
+		h_hotel.city_ko,
+		h_hotel.h_name_ko,
+		h_hotel.h_name_eng
+		ORDER BY
+		room_count DESC
+		LIMIT 10;
+	</select>
+
+	<select id="select_ukAll" resultType="getset.H_getset" parameterType="getset.H_getset">
+		SELECT
+		h_hotel.*,
+		MIN(h_room.h_roompri) AS min_h_roompri
+		FROM h_hotel
+		INNER JOIN h_room ON h_hotel.h_name_eng = h_room.h_name_eng
+		WHERE
+		h_hotel.country_eng = #{country_list}
+		GROUP BY
+		h_hotel.h_name_eng;
+	</select>
+		
+		<select id="select_city" resultType="getset.H_getset" parameterType="getset.H_getset">
+		SELECT
+		h_hotel.*,
+		MIN(h_room.h_roompri) AS min_h_roompri
+		FROM h_hotel
+		INNER JOIN h_room ON h_hotel.h_name_eng = h_room.h_name_eng
+		WHERE
+		h_hotel.city_eng = #{country_list}
+		GROUP BY
+		h_hotel.h_name_eng;
+	</select>
+
+
+	<select id="select_top10_info" resultType="getset.H_getset" parameterType="getset.H_getset">
+		(
+		SELECT h_room.*, h_hotel.*
+		FROM h_room
+		INNER JOIN h_hotel
+		ON h_room.h_name_eng = h_hotel.h_name_eng
+		WHERE h_room.h_name_eng =
+		'${h_name_eng}'
+		AND h_room.h_roomtype = 'double'
+		ORDER BY RAND()
+		LIMIT 1
+		)
+		UNION
+		(
+		SELECT h_room.*, h_hotel.*
+		FROM h_room
+		INNER JOIN h_hotel ON
+		h_room.h_name_eng = h_hotel.h_name_eng
+		WHERE h_room.h_name_eng =
+		'${h_name_eng}'
+		AND h_room.h_roomtype = 'suite'
+		ORDER BY RAND()
+		LIMIT 1
+		);
+	</select>
+
+
+	<select id="select_main_search" resultType="getset.H_getset" parameterType="getset.H_getset">
+	SELECT h_hotel.*,
+	MIN(h_room.h_roompri) AS min_h_roompri
+      FROM h_hotel
+      JOIN h_room ON h_hotel.h_name_eng = h_room.h_name_eng
+      WHERE h_hotel.country_eng = '${country_eng}' AND h_hotel.city_eng ='${city_eng}'
+      AND h_room.h_roomnum NOT IN (
+      SELECT h_roomnum
+      FROM h_reserve
+      WHERE (STR_TO_DATE(CONCAT(${h_indateY}, '-', ${h_indateM}, '-',
+      ${h_indateD}), '%Y-%m-%d') BETWEEN h_indate AND h_outdate)
+      OR (STR_TO_DATE(CONCAT(${h_outdateY}, '-', ${h_outdateM}, '-',
+      ${h_outdateD}), '%Y-%m-%d') BETWEEN h_indate AND h_outdate)
+      )
+      AND h_room.h_roompeo >= ${h_roompeo}
+      GROUP BY h_hotel.h_name_eng;
+	</select>
+	
+<select id="select_sc" resultType="getset.H_getset" parameterType="getset.H_getset">
+    SELECT h_hotel.*,
+    MIN(h_room.h_roompri) AS min_h_roompri
+    FROM h_hotel
+    JOIN h_room ON h_hotel.h_name_eng = h_room.h_name_eng
+    WHERE h_hotel.country_eng = '${country_ko}' AND h_hotel.city_eng = '${city_ko}'
+    
+    AND h_room.h_roomnum NOT IN (
+      SELECT h_reserve.h_roomnum
+      FROM h_reserve
+      WHERE h_reserve.h_indate BETWEEN '${h_indate}' AND '${h_outdate}'
+      OR h_reserve.h_outdate BETWEEN '${h_indate}' AND '${h_outdate}'
+    )
+    AND h_room.h_room_bed = '${h_room_bed}'
+    AND h_room.h_roompeo >= ${h_roompeo1}
+    AND h_room.h_roompri BETWEEN ${sch_minpri} AND ${sch_maxpri}
+    GROUP BY h_hotel.h_name_eng;
+</select>
+
+<select id="infosch_select" resultType="getset.H_getset" parameterType="getset.H_getset">
+    <![CDATA[
+    (
+        SELECT h_room.*
+        FROM h_room
+        WHERE h_room.h_name_eng = #{h_name_eng}
+        AND h_room.h_roompeo >= #{h_roompeo}
+        AND h_room.h_roomnum NOT IN (
+            SELECT h_reserve.h_roomnum
+            FROM h_reserve
+            WHERE (
+                h_reserve.h_indate <= #{h_outdate}
+                AND h_reserve.h_outdate >= #{h_indate} 
+            )
+        )
+        AND h_room.h_roomtype = 'double'
+        LIMIT 1
+    )
+    UNION
+    (
+        SELECT h_room.*
+        FROM h_room
+        WHERE h_room.h_name_eng = #{h_name_eng}
+        AND h_room.h_roompeo >= #{h_roompeo}
+        AND h_room.h_roomnum NOT IN (
+            SELECT h_reserve.h_roomnum
+            FROM h_reserve
+            WHERE (
+                h_reserve.h_indate <= #{h_outdate}
+                AND h_reserve.h_outdate >= #{h_indate} 
+            )
+        )
+        AND h_room.h_roomtype = 'suite'
+        LIMIT 1
+    )
+    ]]>
+</select>
+
+<select id="toreserv_select" resultType="getset.H_getset" parameterType="getset.H_getset">
+SELECT h_room.*, h_hotel.*
+		FROM h_room
+		INNER JOIN h_hotel
+		ON h_room.h_name_eng = h_hotel.h_name_eng
+		WHERE h_room.h_name_eng= #{h_name_eng}
+        AND h_room.h_roomnum=#{h_roomnum};    
+</select>
+
+<select id="tomypageh_select" resultType="getset.H_getset" parameterType="getset.H_getset">
+SELECT h_hotel.*,h_reserve.*,h_room.*
+FROM h_reserve
+INNER JOIN h_room ON h_reserve.h_roomnum = h_room.h_roomnum
+INNER JOIN h_hotel ON h_room.h_name_eng = h_hotel.h_name_eng
+WHERE h_reserve.h_m_id = #{h_m_id}
+ORDER BY ABS(DATEDIFF(NOW(), h_reserve.h_indate))
+LIMIT 1;   
+</select>
+
+
+</mapper>

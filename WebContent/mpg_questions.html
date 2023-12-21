@@ -1,0 +1,370 @@
+<!DOCTYPE Html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mpg_questions.css">
+    <script src=https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js></script>
+    <script src="js/mpg_questions.js"></script>
+    <title>mypage/questions</title>
+</head>
+
+
+<body>
+   <header>
+      <!-------------- header.html import------------->
+         <div id="header"></div>
+         <!-------------- header.html import------------->
+   </header>
+   
+    <!-- 메인 컨텐츠 전체 박스 -->
+    <div class="alMainB">
+    
+        <!--메인페이지 글씨 박스-->
+        <div class="mainTB">
+            <p>문의사항</p>
+        </div>
+
+        <!--메인 네비 컨테인한 박스 -->
+        <div class="mainNCB"> 
+
+         <!--------------mpg_nvbox.html import-------------->
+         <div id="mpg_nvbox"></div>
+            <!--------------mpg_nvbox.html import-------------->
+            
+            <!-- 문의 사항의 시작! 제일 큰 박스-->
+            <div class="questionbox">
+            <!-- 대문글 박스 -->
+                <div class="intro_tB">
+                    <p>고객센터</p>
+                </div>
+                
+
+            <!-- 탭 기능을 넣을 친구들 박스. -->
+            <div class="frst_lne_ctgry">
+                <div class="frstLTab"><p>문의 내역</p>
+                </div>
+                <div class="frstLTab"><p>자주 묻는 질문</p>
+                </div>
+                <div class="frstLTab"><p>문의하기</p>
+                </div>
+            </div> 
+            
+            
+            <!--문의내역 -->
+            <div class="my_qna">
+               <div class="my_qna_listB">
+                  
+                  <!--나의 문의 목록 -->
+                  <div class="myqnaCkB">
+                     <label><input type="checkbox" title="qna_title" value="" name=""><span id="myqnaCkB">데이터에서 가져올 문의 제목</span></label>
+                     <p>답변완료</p>
+                  </div>
+                  
+                  <div class="text_box">
+                     <h3>최근 문의내역을 모두 확인하셨습니다.</h3>
+                     <h5>이전 문의내역이 필요하시면 고객센터에 문의해주세요.</h5>
+                  </div>
+               </div>
+                  <!--qna_dtail_box(문의 내역 클릭하면 자세하게 보이는 애들) -->
+                  <div class="qna_dtail_box">
+                     <div class="qna_dtail_box_band">
+                        <div class="myquestion">
+                           <h4 class="col_style"><span id="db_Pul_Title">데이터에서 가져올 문의 제목</span></h4>
+                           <h4>문의 내용</h4>
+                           <p class="col_style"><span id="db_Pul_cntt">데이터에서 가져올 문의 내용</span></p>
+                           <h6 class=""><span id="write_time">작성시간 : </span></h6>
+                        </div>    
+                        
+                        <div class="answer_box">
+                           <h4>어드벤투어</h4>
+                           <p class="col_style">죄송합니다. 문의 확인 후 답변드리겠습니다.</p>
+                           <h6>작성시간 : </h6>
+                        </div>
+                        <br/>다른 도움이 필요하신가요? 
+                        <input class="go_write_btn  col_style"  type="button" name="go_write_btn" value="새문의 남기기">
+                     </div>
+                  </div><!-- qna_dtail_box 끝 -->
+            </div><!--문의내역 박스 끝-->
+            
+            <!-- 자주 묻는 질문 카테고리 탭박스/ js에서 cmon_qna 클릭했을 경우에만 보이게 만들기. -->
+            <div class="sec_lne_ctgry">
+                <div class="secLTab">
+                	<p>Tour</p>
+                </div>
+                <div class="secLTab">
+                	<p>Bus</p>
+                </div>
+                <div class="secLTab">
+                	<p>Hotel</p>
+                </div>
+                <div class="secLTab">
+                	<p>Shop</p>
+                </div>
+                <div class="secLTab">
+                	<p>주문/결제</p>
+                </div>
+                <div class="secLTab cs_t">
+                	<p>회원 서비스</p>
+                </div>
+            
+               <!-- common qna제목 -->
+				<div class="usual_qna">
+					<div class="usual_qna_ttle">
+						<h3>제목</h3>
+					</div>
+					
+					<!-- 투어 자주하는 질문 전체박스-->
+	                    <div class="t_qna_all">
+		                   
+		                   <div class="t_qna">
+			                   <div class="t_Q">
+			                   [투어]미팅장소에서 (여행자or가이드) 지각하거나 노쇼가 발생되면 어떻게 하나요?
+			                   </div>
+			                   
+			                   <div class="t_A">
+			                  미팅장소에 올바르게 도착하였는지 확인한 이후, 약속되었던 시각보다 15분 이상 지체되었을 경우, 가이드의 상황과 위치 파악을 위해 반드시 바우처나 여행확인증 상의 가이드 연락처를 통해 1차 문의 부탁드립니다. 
+								최종적으로 가이드나 담당자와 연결되지 않을 경우, 아래의 자료를 미리 확보 하여 문의 부탁드립니다.
+								최종적으로 가이드를 만나지 못할 경우, 자료에 근거하여 공급사 및 현지 업체와 논의 후 규정에 따라 사용 및 환불 가능여부를 안내 드립니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="t_qna">
+			                   <div class="t_Q">
+			                   [투어]가이드(파트너)로부터 여행일(24시간이내) 취소 안내를 받았습니다.
+			                   </div>
+			                   
+			                   <div class="t_A">
+			                   가이드 일정 불가로 투어 24시간 이내 예약을 취소되는 경우,
+								해당 상품 운영 가이드에게는 패널티가 주어지며, 동일 상황이 재발을 방지하기 위해 파트너 대상 재교육이 진행됩니다. 
+								타당한 이유가 없이 여행 당일 취소 안내를 받으신 여행자님에게는 마이리얼트립의 이용약관 상의 내용에 근거하여 결제금 전액 환불 + 결제일 기준 추가보상 가능합니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="t_qna">
+			                   <div class="t_Q">
+			                   [투어]여행을 마친 후 불편사항이 있습니다.
+			                   </div>
+			                   
+			                   <div class="t_A">
+			                   마이리얼트립에서는 여행자와 가이드 간의 중재에 도움을 드리고 있습니다. 
+								상품을 이용하신 이후 상품(또는 가이드)에 대한 불편이 있을 경우, 상호 간의 불만사항이 잘 합의 및 해결 될 수 있도록 도움을 드리겠습니다.
+			                   </div>
+		                   </div>
+		                   
+	                   </div>
+					
+					<!-- 버스 자주하는 질문 전체박스-->
+	                    <div class="b_qna_all">
+		                   <div class="b_qna">
+			                   <div class="b_Q">
+			                   [버스] 예약 조회 확인은 어떻게 하나요?
+			                   </div>
+			                   <div class="b_A">
+		                   		PC 홈페이지/모바일 앱에서 아래의 경로로 확인 가능합니다. 회원 조회가 어려우실 경우 비회원 예약조회로도 예약정보 확인이 가능합니다. 
+			                   </div>
+		                   </div>
+		                   
+	                   </div>
+					
+					<!-- 호텔 자주하는 질문 전체박스-->
+	                <div class="h_qna_all">
+	                    <div class="h_qna">
+	                        <div class="h_Q">
+	                        [호텔]예약을 하고 난 후 며칠 뒤 다시 보니 금액이 떨어져 있습니다. 보상 해 주나요?
+	                        </div>
+	                        
+	                        <div class="h_A">
+	                        어드벤투어 호텔 호텔은 여러 호텔 공급 업체를 통해 예약이 진행됩니다.
+	                        이에 환율에 따라 요금 변동이 있을 수도 있으며, 업체에서 판매 중이던 객실의 요금이 변동되는 경우도 있습니다.  따라서, 요금은 검색시기에 따라 달라질 수 있습니다.
+	                        ** 경우에 따라 날짜가 많이 남은 시점에 이른 예약자를 위한 특가가 나오는 경우도 있으며, 임박하여 잔여 객실 판매를 위한 특가가 나오는 경우도 있습니다.
+	                        예약 후 동일 조건 요금 인하에 대한 별도 보상은 제공되지 않습니다.
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="h_qna">
+	                        <div class="h_Q">
+	                        [호텔] 호텔 예약을 하고 싶은데 일정은 현지 시간 기준인가요?
+	                        </div>
+	                        
+	                        <div class="h_A">
+	                        호텔 요금 조회시 일정은 국내 시간 기준이 아닌, 현지 시간 기준으로 확인 후 예약 해 주셔야 합니다.
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="h_qna">
+	                        <div class="h_Q">
+	                        [호텔] 예약을 했는데 "대기예약"상태입니다. 언제 확정이 나나요?
+	                        </div>
+	                        
+	                        <div class="h_A">
+	                        대기 예약 접수시 업무시간 기준 3시간~24시간 이내 가능여부를 확인 후 안내 드립니다.  
+	                        지역 및 호텔에 따라 확인 소요 시간은 24시간 초과될 수 있습니다.
+	                        또한, 자사 업무시간 이후 또는 주말/공휴일에 접수된 대기 예약은 업무일에 확인이 가능합니다.
+	                        업무시간: 평일 9시~18시(점심시간12시~13시) / 주말, 공휴일 휴무
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="h_qna">
+	                        <div class="h_Q">
+	                        [호텔] 호텔예약시 예약자와 호텔투숙자가 달라도 되나요?
+	                        </div>
+	                    
+	                        <div class="h_A">   
+	                        네, 가능합니다. 
+	                        
+	                        호텔예약시 호텔에는 투숙자명에 대한 정보만 들어가기 때문에 예약자와 투숙자는 달라도 예약가능합니다. 
+	                        
+	                        다만 기재해주시는 투숙자명은 실제 투숙자의 여권 상 영문 명과 정확해야 합니다.
+	                        
+	                        여권 상 영문명과 일치하지 않을 경우 체크인 시 문제가 될 수 있습니다.
+	                        </div>
+	                   	</div>
+	                   </div>
+					
+					    <!-- shop 자주하는 질문 전체박스-->
+	                    <div class="s_qna_all">
+		                   <div class="s_qna">
+			                   <div class="s_Q">
+			                   [쇼핑]배송정보 수정 가능한가요?
+			                   </div>
+			                   <div class="s_A">
+			                   배송 정보는 로그인 후 예약내역의 준비중인 여행 > (화살표 클릭) 예약 상세 에서 확인 가능합니다.
+								출고 전 주소지 변경이 필요한 경우, 확정대기 상태에서는 직접 취소하시고 재예약을 진행하시면 됩니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="s_qna">
+			                   <div class="s_Q">
+			                   [쇼핑]티켓 공항 수령처의 위치와 이용시간을 알려주세요.
+			                   </div>
+			                   <div class="s_A">
+			                   인천공항 제 1터미널 
+								- 위치 : 인천공항 3층 국제선 서편 N카운터 마이리얼트립 부스 (여행사데스크 32번)
+								- 운영 시간 : 05:30~20:00
+			                   </div>
+		                   </div>
+		                   
+	                   </div>
+	                   
+	                    <!-- 주문/결제 자주하는 질문 전체박스-->
+	                    <div class="oP_qna_all">
+		                   <div class="oP_qna">
+			                   <div class="oP_Q">
+			                   [주문/결제]환불은 어떻게 받나요?
+			                   </div>
+			                   <div class="oP_A">
+			                   [신용카드 및 체크카드]
+								취소 안내 받은날로부터 카드사 사정에 따라 영업일 기준 2~4일 이내 취소내역 확인됩니다.
+								
+								[무통장입금]
+								환불신청요청서에 환불계좌정보(계좌번호, 은행명, 예금주)를 기재해주시면 영업일 기준 1~3일 이내에 입급처리됩니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="oP_qna">
+			                   <div class="oP_Q">
+			                   [주문/결제]결제 중 오류가 발생했어요. 결제가 된 건가요?
+			                   </div>
+			                   <div class="oP_A">
+			                   고객님의 계정 확인 후 안내 해드릴 수 있습니다.
+								고객센터로 연락주시어 정상결제 여부를 꼭 확인하시기 바랍니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="oP_qna">
+			                   <div class="oP_Q">
+			                   	[주문/결제]현금영수증은 어떻게 받나요?
+			                   </div>
+			                   <div class="oP_A">
+			                   어드벤투어는 현지 가이드 상품을 중개해 드리는 서비스이며 현지 투어 자체가 가이드 용역 형태로 진행되는 부분으로 증빙서 발급이 진행되지 않습니다.
+								티켓 상품의 경우 무통장입금으로 진행되었을 경우 고객센터로 “예약번호, 휴대폰번호”를 말씀 해주시기 바랍니다.
+			                   </div>
+		                   </div>
+	                   </div>
+	                   
+	                   
+	                    <!-- 회원서비스 자주하는 질문 전체박스-->
+	                    <div class="cs_qna_all">
+		                   <div class="cs_qna">
+			                   <div class="cs_Q">
+			                   [회원서비스] 계정 탈퇴는 어떻게 하나요?
+			                   </div>
+			                   <div class="cs_A">
+			                   [PC/모바일 웹]
+
+								(1) 로그인 후 프로필 수정 페이지 클릭
+								
+								(2) 편집 클릭 후 비밀번호 인증
+								
+								(3) 하단 [계정 삭제하기] 클릭
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="cs_qna">
+			                   <div class="cs_Q">
+			                   [회원서비스] 비밀번호/로그인 계정을 잊어버렸는데 초기화할 수 있나요?
+			                   </div>
+			                   <div class="cs_A">
+			                   이메일로 받으신 비밀번호 재설정 링크를 통해 비밀번호 설정을 변경하신 후, 재로그인 해주시기 바랍니다. 
+								
+								비밀번호 변경이 어려우신 경우 아래의 고객지원실(1670-8208) 혹은 1:1 채팅상담, 혹은 '문의하기'로 문의주시기 바랍니다.
+			                   </div>
+		                   </div>
+		                   
+		                   <div class="cs_qna">
+			                   <div class="cs_Q">
+			                   [회원서비스] 기타 개인정보에 관련하여 문의하고 싶습니다.
+			                   </div>
+			                   <div class="cs_A">
+			                   어벤투어 고객센터 (02-6951-5933)에 연락 주시면 성심껏 도와드리도록 하겠습니다.
+			                   </div>
+		                   </div>
+	                   </div>
+               	</div>    
+               </div><!-- 자주 묻는 질문 카테고리 탭박스 끝 -->
+            
+            <!--frst_lne_ctgry 탭에서 문의하기를 눌렀을 경우-->
+            <div class="write">
+               <!--텍스트 박스 클래스-->
+               <div class="qna_wrte_txt">   
+                  <h3>어드벤투어의 중심은 항상 고객님입니다.</h3>
+                  <h5>어드벤투어를 이용하면서 느끼신 불편사항이나 바라는 점을 알려주세요.<br/>
+                  고객님의 소중한 의견으로 한 뼘 더 자라는 어드벤투어가 되겠습니다.</h5>
+                  <h6>문의량이 많아 답변은 24시간 이상 소요될 수 있습니다.</h6>
+               </div>
+               
+               <div class="qna_info">
+                  <!--button펑션으로 폼의 정보를 ajax로 jsp페이지 연동.-->
+                  <form class="margin_t_lft" name="qna_info" method="post" onsubmit="return" action="mpg_questions_save.jsp">
+                     <select class="qna_selBox" name="q_num" required>
+                        <option value="">유형을 선택해주세요.</option>
+                        <option value="Tour">Tour</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Shop">Shop</option>
+                        <option value="odr_pmnt">주문/결제</option>
+                        <option value="cs">회원 서비스</option>
+                     </select>
+                     <input class="qna_ttl_box padding_left5" type="text" name="q_title" placeholder="제목을 입력해주세요" title="title" required /><br/><br/>
+				<!--<input class="qna_cntt_box" type="text" name="q_cntt" placeholder="문의 내용을 입력해주세요." title="cntt" required /><br/><br/> -->
+                     <textarea class="qna_cntt_box padding_left5" name="q_cntt" placeholder="문의 내용을 입력해주세요." title="cntt" required></textarea><br/><br/>
+                     <input class="qna_img_box padding_left5" type="text" name="q_img" placeholder="이미지 첨부 파일" title="img" /><br/>
+                     <input class="qna_btn margin_lft60 col_style" type="submit" name="sndBtn" title="보내기 버튼" value="보내기" />
+                  </form>
+               </div>
+            </div><!--frst_lne_ctgry 탭에서 문의하기를 눌렀을 경우 박스 끝-->
+         
+            </div><!--문의 사항의 시작, 제일 큰 박스 끝-->
+            
+        </div><!--메인 네비 컨테인한 박스 끝 -->
+        
+    </div><!-- 메인 컨텐츠 전체 박스 끝-->
+    <footer>
+         <!------------- footer.html import------------->
+      <div id="footer"></div>
+      <!------------- footer.html import------------->
+   </footer>
+</body>
+
+</html>
